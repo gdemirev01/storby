@@ -60,11 +60,6 @@
                   </label>
                 </div>
               </div>
-              <div class="column is-6">
-                <div class="select field is-pulled-right">
-                  <%= f.select :role, Role.all.collect {|r| r.name} %>
-                </div>
-              </div>
             </div>
             <div class="actions">
               <%= f.submit "Sign up", class: 'button is-dark is-fullwidth' %>

@@ -4,16 +4,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :reviews
-  belongs_to :role, optional: true
-  has_one_attached :profile_pic
-
-  before_create :set_default_role
-
-  has_and_belongs_to_many :games
+  enum role: [:user, :developer, :admin]
+  after_initialize :set_default_role, :if => :new_record?
 
   private
   def set_default_role
-    self.role ||= Role.find_by_name('user')
+    self.role ||= :user
   end
+
+  has_many :reviews
+  has_one_attached :profile_pic
+
+
+  has_and_belongs_to_many :games
 end
