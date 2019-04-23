@@ -72,4 +72,15 @@ class ReviewsController < ApplicationController
     def review_params
       params.require(:review).permit(:text, :recommended)
     end
+
+    def allowed_to_create_review
+      @game = Game.find(params[:review][:game])
+      @reviews = @game.reviews
+      @reviews.each do |r|
+        if r.user == current_user
+          redirect_to controller: "home", index: "show"
+          break
+        end
+      end
+    end
 end

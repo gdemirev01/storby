@@ -1,0 +1,227 @@
+[33mcommit d7588e31d9884e8a63d0d78ad056d5d98e045715[m[33m ([m[1;36mHEAD[m[33m)[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Tue Apr 23 18:03:25 2019 +0300
+
+    Working slideshow
+
+[33mcommit a849301b5a33e2d5062c9f0af94ba66a7d1b4548[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Mon Apr 22 19:21:44 2019 +0300
+
+    Changed role to be an enum inside user; currently unable to create games for some reason
+
+[33mcommit 6d39024340351b1f67bbbb9b5aa446475d223907[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Mon Apr 22 16:03:20 2019 +0300
+
+    Added a nice footer
+
+[33mcommit f9f0a7cd09a41131905a636c1fdbc5a3a3c4867c[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Wed Apr 10 10:38:31 2019 +0300
+
+    Added fancy notifications
+
+[33mcommit 2476e494296c9f6667012ef40cab8121c77d2338[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Wed Apr 10 09:55:01 2019 +0300
+
+    Library now worksgit add .git add .!
+
+[33mcommit 34c26941161f3b4d9742026b31d2a6b659cbe031[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Wed Apr 10 09:24:47 2019 +0300
+
+    Now user can successfully add games to their library
+
+[33mcommit 1364310d8744713761427e9917622c255a8eda6d[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Tue Apr 9 23:19:26 2019 +0300
+
+    Began work on being able to add games to library
+
+[33mcommit da4fb60f6c144133446702e85fecc95b928e56c4[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Tue Apr 9 18:07:46 2019 +0300
+
+    Pretty search bar
+
+[33mcommit 60c8a8e85256551fd1bd890191653c6d080a757c[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Tue Apr 9 17:22:29 2019 +0300
+
+    Added containers in several places
+
+[33mcommit e84467a251ab7f76679e407fcc22b6012c5ef37f[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Mon Apr 8 23:18:22 2019 +0300
+
+    Improved search(it's case insensitive now
+
+[33mcommit 0943daf066c8235bce95ec8d79e8d3f69d4a1043[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Mon Apr 8 22:47:14 2019 +0300
+
+    Added basic search functionality
+
+[33mcommit ee6aac426a39758af0b96bdb71384f48b6a5851f[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Mon Apr 8 21:22:39 2019 +0300
+
+    Fixed up show page for games
+
+[33mcommit c184bab62d4df895819cbd64a354700f1ff7ec45[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Mon Apr 8 19:09:15 2019 +0300
+
+    VERY COOL log in and sign up pages
+
+[33mcommit be73d323347dbd97801138f9111b98a8c73d5b54[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Mon Apr 8 18:24:28 2019 +0300
+
+    Fixed up all games section
+
+[33mcommit c3611bd1c69431815a40572477f91ef2cdfbfc51[m
+Author: Gdemirev01 <gdemirev78@gmail.com>
+Date:   Fri Apr 5 22:32:05 2019 +0300
+
+    user roles effects
+
+[33mcommit 184cffe6e03ba7f99c1362f26d29bcc94d7cd971[m
+Author: Gdemirev01 <gdemirev78@gmail.com>
+Date:   Fri Mar 29 14:29:59 2019 +0200
+
+    landing page with backend
+
+[33mcommit 570d72d96ea5b0b44d1cbf18d9ada62bdc60f19e[m
+Author: Gdemirev01 <gdemirev78@gmail.com>
+Date:   Thu Mar 28 23:56:01 2019 +0200
+
+    iliq brat mi, imame snimki na igrite. Napravi go hubavo, molqgit add .! <3
+
+[33mcommit 11908a61949283038799bcd73e82489636058309[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Wed Mar 27 14:17:50 2019 +0200
+
+    Pulled dropdown in sign up page to the right
+
+[33mcommit 4f59b7a2eb4bc1ef88d32a7521b5d51b19574556[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Wed Mar 27 13:51:12 2019 +0200
+
+    Log in is more beautiful
+
+[33mcommit 796b5b0629fea6a4e0fb8657554471725ee89b78[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Wed Mar 27 13:07:34 2019 +0200
+
+    Presentation ready state
+
+[33mcommit 9e06b900a2ee19cd5ebda6893fa721f8bbfb85e6[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Tue Mar 26 21:37:41 2019 +0200
+
+    Changed navbar colors (for the better)
+
+[33mcommit 624f218246ddc25ae63bd9c7a52ee8ee69992fd2[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Tue Mar 26 20:59:53 2019 +0200
+
+    Changed navbar colors (for the better)
+
+[33mcommit 4de5520f1a3bc4a1751921d7f6b3132158868ca0[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Tue Mar 26 20:49:56 2019 +0200
+
+    Moved search bar to the right and added dropdown for genres
+
+[33mcommit 67df7b7140030498dc8d8a1949a5dad3d35652b0[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Tue Mar 26 16:28:55 2019 +0200
+
+    Added template to home page
+
+[33mcommit 5e14fb3848ef8604093417651a1dc61ff3a9130c[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Tue Mar 26 12:03:04 2019 +0200
+
+    Beautitful dropdown when user is logged in + avatar
+
+[33mcommit f19aa21a8c2ca702eb38ffddd0afc52ec37165a0[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Mon Mar 25 17:32:44 2019 +0200
+
+    Added some styles for games list
+
+[33mcommit 2c7e107e2269f7cfb47c33817189c44b507a4b5f[m
+Author: Gdemirev01 <gdemirev78@gmail.com>
+Date:   Fri Mar 22 21:01:45 2019 +0200
+
+    roles working
+
+[33mcommit 38a04ba8e2fc1001e4586f820e6e2e7d26571b05[m
+Author: Gdemirev01 <gdemirev78@gmail.com>
+Date:   Thu Mar 21 21:21:26 2019 +0200
+
+    schupeni roli
+
+[33mcommit cac4b05bc104d618514833e366310584e5550f3c[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Wed Mar 20 13:23:34 2019 +0200
+
+    Added sass vars for color scheme and fonts
+
+[33mcommit 461f0fc8d560cfaadc2a4be266b4e7588cdd4ce2[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Mon Mar 4 19:31:18 2019 +0200
+
+    Added styling to registration page; todo: display file name with js
+
+[33mcommit 184894912cb98e99709b07274e8a90d13dfc6956[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Mon Mar 4 18:36:17 2019 +0200
+
+    removed users folder from views and added some styling to registration
+
+[33mcommit 8f405bba2d5d371580351558c93584fccdb03e9a[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Mon Mar 4 18:15:39 2019 +0200
+
+    Removed scaffolds.scss which has fixed weird space around navbar
+
+[33mcommit 91e7187bbae78ac4fdbf4de842ca4c78e10886f3[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Mon Mar 4 18:12:04 2019 +0200
+
+    Removed needless sign up/login buttons
+
+[33mcommit d1825a919dc0047733b1a055be5fb10a4b11ea4c[m
+Author: gdemirev01 <gdemirev78@gmail.com>
+Date:   Sun Mar 3 18:10:09 2019 +0200
+
+    user profile_pic
+
+[33mcommit 62863c3ca79ad5c4629de2b9d8b16f8501f04015[m
+Author: gdemirev01 <gdemirev78@gmail.com>
+Date:   Sun Mar 3 13:55:40 2019 -0800
+
+    users and reviews
+
+[33mcommit 4766797e7fafa3414882ea3ef849b5b979583e14[m
+Author: gdemirev01 <gdemirev78@gmail.com>
+Date:   Sun Mar 3 01:56:25 2019 -0800
+
+    relese date and status
+
+[33mcommit 7583540c8e4aa2e90cf183832cb4f62b67f950a4[m
+Author: iliapa1 <ilia.nikolaev.parvanov@gmail.com>
+Date:   Tue Feb 19 09:20:29 2019 +0200
+
+    Added navbar to all pages. Hamburger menu is a little broken and bottom border is missing.
+
+[33mcommit 83bf84d83b8332b60c1843900c3f566e9ba87dda[m
+Author: gdemirev01 <gdemirev78@gmail.com>
+Date:   Mon Feb 18 19:17:14 2019 +0200
+
+    initial commit

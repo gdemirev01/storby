@@ -72,11 +72,21 @@
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <%= render 'reviews/form', review: @review %>	
-  </div>
-</section>
+<% if @allowed_to_leave_review %>
+  <section class="section">
+    <div class="container">
+      <div class="tabs is-medium">
+        <ul>
+          <li class="is-active">
+            <span class="icon is-small"><%= fa_icon "angle-down" %></span>
+            <span>Изпрати обратна връзка на екипа</span>
+          </li>
+        </ul>
+      </div>
+      <%= render 'reviews/form', review: @review %>	
+    </div>
+  </section>
+<% end %>
 
 <section class="section">
   <div class="container">
@@ -114,6 +124,9 @@
     <% end %>
   </div>
 </section>
+<br>
+<br>
+
 <script>
   document.addEventListener("turbolinks:load", function() {
     var activeSlideId = 0;

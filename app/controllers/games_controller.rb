@@ -19,6 +19,13 @@ class GamesController < ApplicationController
   def show
     @review = Review.new
     @reviews = @game.reviews
+    @allowed_to_leave_review = true;
+    @reviews.each do |r|
+      if r.user == current_user
+        @allowed_to_leave_review = false
+        break
+      end
+    end
   end
 
   # GET /games/new
