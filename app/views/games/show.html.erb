@@ -8,13 +8,17 @@
     <div class="tile is-ancestor">
       <div class="tile is-8 is-parent">
         <div class="tile is-child">
-          <% (1..@game.imageCounter).to_a.each do |i| %>
-            <a class="pop">
-              <figure class="image is-16by9">
-                <%= image_tag(("https://res-5.cloudinary.com/moses-nfsg/image/upload/v1/storby/" + @game.name + "/" + i.to_s)) %>
-              </figure>
-            </a>
-          <% end %>
+          <div class="slideshow-container">
+            <% (1..@game.imageCounter).to_a.each do |i| %>
+              <div class="slide">
+                <figure class="image is-16by9">
+                  <%= image_tag("https://res-5.cloudinary.com/moses-nfsg/image/upload/v1/storby/" + @game.name.parameterize.underscore + "/" + i.to_s, style: "width: 100%;")%>
+                </figure>
+              </div>
+            <% end %>
+            <a id="prev-slide"><%= fa_icon "arrow-left lg" %></a>
+            <a id="next-slide"><%= fa_icon "arrow-right lg" %></a>
+          </div>
         </div>
       </div>
 
@@ -110,3 +114,39 @@
     <% end %>
   </div>
 </section>
+<script>
+  document.addEventListener("turbolinks:load", function() {
+    var activeSlideId = 0;
+    updateSlides(activeSlideId);
+
+    const leftButton = document.getElementById("prev-slide");
+    if (leftButton == null) {
+      console.log("Error finding left button!");
+    } else {
+      leftButton.addEventListener('click', () => updateSlides(-1));
+    }
+
+    const rightButton = document.getElementById("next-slide");
+    if (rightButton == null) {
+      console.log("Error finding right button!");
+    } else {
+      rightButton.addEventListener('click', () => updateSlides(1));
+    }
+
+    function updateSlides(indexChange) {
+      allSlides = document.getElementsByClassName("slide");
+
+      activeSlideId += indexChange
+      if (activeSlideId < 0) {
+        activeSlideId = allSlides.length - 1;
+      } else if (activeSlideId >= allSlides.length) {
+        activeSlideId = 0;
+      }
+      console.log(`activeSlideId: ${activeSlideId}, indexChange: ${indexChange}`);
+      for (let slide of allSlides) { slide.style.display = "none" }
+      allSlides[activeSlideId].style.display = "block";
+    } 
+    
+  });
+  
+</script>
