@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :userrails
+  resources :requests
+  # devise_for :userrails
   get "/", to: "home#index"
   resources :home, :reviews
-  devise_for :users, controllers: { registrations: "users/registrations" }
+  devise_for :users
   devise_for :views
   resources :games
   patch "/games/:id/buy", to: "games#add_to_user"

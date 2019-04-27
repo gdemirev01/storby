@@ -1,61 +1,73 @@
-<div class="columns is-centered is-mobile">
-  <h2 class="is-size-4">Sign up</h2>
-</div>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<section class="hero is-dark is-fullheight-with-navbar">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h2 class="is-size-4">Sign up</h2>
+        </div>
+      </div>
+      <div class="columns is-vcentered is-centered">
+        <div class="column is-one-third">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email, class: 'label' %>
-    <div class="control has-icons-left">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input is-medium' %>
-      <span class="icon is-medium is-left">
-        <%= fa_icon "envelope" %>
-      </span>
+            <div class="field">
+              <%= f.label :email, class: 'label has-text-white' %>
+              <div class="control has-icons-left">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input is-medium' %>
+                <span class="icon is-medium is-left">
+                  <%= fa_icon "envelope" %>
+                </span>
+              </div>
+            </div>
+
+            <div class="field">
+              <%= f.label :password, class: 'label has-text-white' %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %>
+              <div class="control has-icons-left">
+                <%= f.password_field :password, autocomplete: "new-password", class: 'input is-medium' %>
+                <span class="icon is-medium is-left">
+                  <%= fa_icon "lock" %>
+                </span>
+              </div>
+            </div>
+
+            <div class="field">
+              <%= f.label :password_confirmation, class: 'label has-text-white' %>
+              <div class="control has-icons-left">
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input is-medium' %>
+                <span class="icon is-medium is-left">
+                    <%= fa_icon "lock" %>
+                </span>
+              </div>
+            </div>
+            <div class="columns">
+              <div class="column is-6">
+                <div class="field">
+                  <%= f.label :profile_pic, class: 'label hidden has-text-white' %>
+                  <label class="file-label">
+                    <%= f.file_field :profile_pic, class: 'file-input' %>
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <%= fa_icon "upload" %>
+                      </span>
+                      <span class="file-label">
+                        Choose a file…
+                      </span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="actions">
+              <%= f.submit "Sign up", class: 'button is-dark is-fullwidth' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password, class: 'label' %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %>
-    <div class="control has-icons-left">
-      <%= f.password_field :password, autocomplete: "new-password", class: 'input is-medium' %>
-      <span class="icon is-medium is-left">
-        <%= fa_icon "lock" %>
-      </span>
-    </div>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, class: 'label' %>
-    <div class="control has-icons-left">
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input is-medium' %>
-      <span class="icon is-medium is-left">
-          <%= fa_icon "lock" %>
-      </span>
-    </div>
-  </div>
-
-  <div class="field">
-    <%= f.label :profile_pic, class: 'label hidden' %>
-    <label class="file-label">
-      <%= f.file_field :profile_pic, class: 'file-input' %>
-      <span class="file-cta">
-        <span class="file-icon">
-          <%= fa_icon "upload" %>
-        </span>
-        <span class="file-label">
-          Choose a file…
-        </span>
-      </span>
-    </label>
-  </div>
-
-
-  <%= f.select :role, Role.all.collect {|r| r.name} %>
-  <div class="actions">
-    <%= f.submit "Sign up", class: 'button is-link' %>
-  </div>
-<% end %>
+</section>
 <!--<%= render "devise/shared/links" %>-->
