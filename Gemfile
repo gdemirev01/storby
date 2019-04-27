@@ -62,7 +62,7 @@ group :test do
   gem 'chromedriver-helper'
 end
 
-gem 'devise'
+gem "devise", ">= 4.6.0"
 
 gem 'pg'
 
