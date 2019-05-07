@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :credit_cards
   resources :requests
   # devise_for :userrails
   get "/", to: "home#index"
