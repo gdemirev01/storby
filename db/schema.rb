@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_30_192416) do
+ActiveRecord::Schema.define(version: 2019_05_11_082221) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 2019_04_30_192416) do
     t.string "status"
     t.date "relese_date"
     t.integer "imageCounter"
+    t.integer "genre", default: 0
+    t.index ["genre"], name: "index_games_on_genre"
   end
 
   create_table "games_users", id: false, force: :cascade do |t|

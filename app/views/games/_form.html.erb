@@ -27,6 +27,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :genre %>
+    <%= form.select :genre, (@genres.each {|g| g})%>
+  </div>
+
+  <div class="field">
     <%= form.select :status, (@statusTypes.each {|s| s}) %>
   </div>
 

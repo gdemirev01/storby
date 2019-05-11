@@ -31,6 +31,7 @@ class GamesController < ApplicationController
   # GET /games/new
   def new
     @statusTypes = ["Relesed", "Beta", "Alpha"]
+    @genres = Game.genres.each.map { |g| g[0]}
     @game = Game.new
   end
 
@@ -154,11 +155,12 @@ class GamesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_game
       @game = Game.find(params[:id])
+      @genres = Game.genres.each.map { |g| g[0]}
       @statusTypes = ["Relesed", "Beta", "Alpha"]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.require(:game).permit(:name, :desc, :price, :status, :search, source: [],)
+      params.require(:game).permit(:name, :desc, :price, :genre, :status, :search, source: [],)
     end
 end

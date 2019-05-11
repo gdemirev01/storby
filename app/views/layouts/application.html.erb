@@ -35,15 +35,11 @@
               <span >Games</span>
             </a>
             <div class="navbar-dropdown">
-              <a href="#" class="navbar-item">
-                Action
-              </a>
-              <a href="#" class="navbar-item">
-                Adventure
-              </a>
-              <a href="#" class="navbar-item">
-                Strategy
-              </a>
+              <% Game.genres.each do |g| %>
+                <a href="#" class="navbar-item">
+                  <%= g[0].capitalize %>
+                </a>
+              <% end %>
               <hr class="navbar-divider">
               <%= link_to "All games", games_path, method: :get, :class => 'navbar-item'  %>              
             </div>
