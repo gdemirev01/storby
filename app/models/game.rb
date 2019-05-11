@@ -1,3 +1,4 @@
+
 class Game < ApplicationRecord
 	has_many :reviews
 	validates_presence_of :name, :price, :source

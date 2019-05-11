@@ -1,3 +1,5 @@
+require './lib/recommendation.rb'
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -49,4 +51,6 @@ class User < ApplicationRecord
       end
     end
   end
+
+  include Recommendation
 end

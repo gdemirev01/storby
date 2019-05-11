@@ -97,42 +97,44 @@ class GamesController < ApplicationController
       user = User.find(current_user.id)
       puts(current_user.id)
 
-      require 'active_merchant'
+      if @game.price > 0
+        require 'active_merchant'
 
-      # Use the TrustCommerce test servers
-      ActiveMerchant::Billing::Base.mode = :test
+        # Use the TrustCommerce test servers
+        ActiveMerchant::Billing::Base.mode = :test
 
-      gateway = ActiveMerchant::Billing::PaypalGateway.new(
-                  login: 'gdemirev78-facilitator_api1.gmail.com',
-                  password: '9UFBFWS8KFDDA8H4',
-                  signature: "AyGU4EPrteLs4B5-UwCtU9CWOZJyA6gqvbzYkHKJOBU-S7oY4QgOjawb")
+        gateway = ActiveMerchant::Billing::PaypalGateway.new(
+                    login: 'gdemirev78-facilitator_api1.gmail.com',
+                    password: '9UFBFWS8KFDDA8H4',
+                    signature: "AyGU4EPrteLs4B5-UwCtU9CWOZJyA6gqvbzYkHKJOBU-S7oY4QgOjawb")
 
-      # ActiveMerchant accepts all amounts as Integer values in cents
-      amount = @game.price * 100  # $10.00
+        # ActiveMerchant accepts all amounts as Integer values in cents
+        amount = @game.price * 100  # $10.00
 
-      card = CreditCard.find_by user: user
+        card = CreditCard.find_by user: user
 
-      # The card verification value is also known as CVV2, CVC2, or CID
-      credit_card = ActiveMerchant::Billing::CreditCard.new(
-                      :first_name         => card.first_name,
-                      :last_name          => card.last_name,
-                      :number             => card.number,
-                      :month              => card.expiration_month,
-                      :year               => card.expiration_year,
-                      :verification_value => card.card_security_code)
+        # The card verification value is also known as CVV2, CVC2, or CID
+        credit_card = ActiveMerchant::Billing::CreditCard.new(
+                        :first_name         => card.first_name,
+                        :last_name          => card.last_name,
+                        :number             => card.number,
+                        :month              => card.expiration_month,
+                        :year               => card.expiration_year,
+                        :verification_value => card.card_security_code)
 
-      # Validating the card automatically detects the card type
-      if credit_card.validate.empty?
-        # Capture $10 from the credit card
-        response = gateway.purchase(amount, credit_card, options = {ip: "127.0.0.1"})
+        # Validating the card automatically detects the card type
+        if credit_card.validate.empty?
+          # Capture $10 from the credit card
+          response = gateway.purchase(amount, credit_card, options = {ip: "127.0.0.1"})
 
-        if response.success?
-          puts "Successfully charged $#{sprintf("%.2f", amount / 100)} to the credit card #{credit_card.display_number}"
-        else
-          raise StandardError, response.message
+          if response.success?
+            puts "Successfully charged $#{sprintf("%.2f", amount / 100)} to the credit card #{credit_card.display_number}"
+          else
+            raise StandardError, response.message
+          end
         end
       end
-
+      
       @game.users << user
       if @game.save
         respond_to do |format|
@@ -155,7 +157,7 @@ class GamesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_game
       @game = Game.find(params[:id])
-      @genres = Game.genres.each.map { |g| g[0]}
+      @genres = Game.genres.each.map { |g| g[0] }
       @statusTypes = ["Relesed", "Beta", "Alpha"]
     end
 
