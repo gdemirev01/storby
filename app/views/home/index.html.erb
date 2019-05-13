@@ -10,31 +10,7 @@
             <div class="columns is-multiline">
                 <% current_user.recommend_games.each do |game| %>
                     <%# Please, put the below in separate file as a reusable component cuz this is dumb %>
-                    <div class="column is-one-quarter">
-                        <div class="card">
-                            <%= link_to(game) do %>
-                                <div class="card-image">
-                                    <figure class="image is-4by3">
-                                        <%= image_tag(("https://res.cloudinary.com/moses-nfsg/image/upload/v1549921456/storby/" + game.name.parameterize.underscore + "/1")) %>
-                                    </figure>
-                                </div>
-                                <div class="card-content">
-                                    <div class="columns is-mobile is-vcentered">
-                                        <div class="column is-8">
-                                            <span class="title is-5"><%= game.name %></span>
-                                        </div>
-                                        <div class="column is-4 has-text-right">
-                                            <% if game.price == 0 %>
-                                                <span>Free</span>
-                                            <% else %>
-                                                <span><%= game.price %></span>
-                                            <% end %>
-                                        </div>
-                                    </div>
-                                </div>
-                            <% end %>
-                        </div>
-                    </div>
+                    <%= render 'components/game_card', game: game, column_size: "is-one-quarter" %>
                 <% end %>
             </div>
         </div>
@@ -55,31 +31,7 @@
 
         <div class="columns is-multiline" >
             <% @games.each do |game| %>
-                <div class="column is-one-quarter">
-                    <div class="card">
-                        <%= link_to(game) do %>
-                            <div class="card-image">
-                                <figure class="image is-4by3">
-                                    <%= image_tag(("https://res.cloudinary.com/moses-nfsg/image/upload/v1549921456/storby/" + game.name.parameterize.underscore + "/1")) %>
-                                </figure>
-                            </div>
-                            <div class="card-content">
-                                <div class="columns is-mobile is-vcentered">
-                                    <div class="column is-8">
-                                        <span class="title is-5"><%= game.name %></span>
-                                    </div>
-                                    <div class="column is-4 has-text-right">
-                                        <% if game.price == 0 %>
-                                            <span>Free</span>
-                                        <% else %>
-                                            <span><%= game.price %></span>
-                                        <% end %>
-                                    </div>
-                                </div>
-                            </div>
-                        <% end %>
-                    </div>
-                </div>
+                <%= render 'components/game_card', game: game %>
             <% end %>
         </div>
     </div>

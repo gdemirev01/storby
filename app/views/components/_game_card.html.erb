@@ -1,0 +1,29 @@
+<% game = yield.presence || local_assigns.fetch(:game) %>
+
+<% column_size = local_assigns.fetch(:column_size, "") %>
+
+<div class="column <%= column_size %>">
+    <div class="card">
+        <%= link_to(game) do %>
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <%= image_tag(("https://res.cloudinary.com/moses-nfsg/image/upload/v1549921456/storby/" + game.name.parameterize.underscore + "/1")) %>
+                </figure>
+            </div>
+            <div class="card-content">
+                <div class="columns is-mobile is-vcentered">
+                    <div class="column is-8">
+                        <span class="title is-5"><%= game.name %></span>
+                    </div>
+                    <div class="column is-4 has-text-right">
+                        <% if game.price == 0 %>
+                            <span>Free</span>
+                        <% else %>
+                            <span><%= game.price %></span>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
