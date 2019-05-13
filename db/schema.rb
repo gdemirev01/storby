@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_11_082221) do
+ActiveRecord::Schema.define(version: 2019_05_13_202537) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 2019_05_11_082221) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "administrators", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "remember_token"
+    t.datetime "remember_token_expires_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "credit_cards", force: :cascade do |t|
@@ -55,7 +66,7 @@ ActiveRecord::Schema.define(version: 2019_05_11_082221) do
     t.string "status"
     t.date "relese_date"
     t.integer "imageCounter"
-    t.integer "genre", default: 0
+    t.integer "genre"
     t.index ["genre"], name: "index_games_on_genre"
   end
 

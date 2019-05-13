@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update, :destroy, :add_to_user]
-
+  before_action :restrict_access, only: [:new, :edit, :update, :destroy, :add_to_user]
   # GET /games
   # GET /games.json
   def index
@@ -164,5 +164,11 @@ class GamesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
       params.require(:game).permit(:name, :desc, :price, :genre, :status, :search, source: [],)
+    end
+
+    def restrict_access
+      if(!current_user.present? || (current_user.present? && current_user.role != "developer"))
+        redirect_to "/"
+      end
     end
 end
