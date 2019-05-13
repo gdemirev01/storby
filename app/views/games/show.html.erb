@@ -77,6 +77,15 @@
   </div>
 </section>
 
+<section class="section">
+  <div class="container">
+    <p>Similar games</p>
+    <% for similar_game in @game.recommend_similar_games %>
+      <p><%= similar_game.name %></p>
+    <% end %>
+  </div>
+</section>
+
 <% if @allowed_to_leave_review %>
   <section class="section">
     <div class="container">

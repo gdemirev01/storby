@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update, :destroy, :add_to_user]
-  before_action :restrict_access, only: [:new, :edit, :update, :destroy, :add_to_user]
+  before_action :restrict_access, only: [:new, :edit, :update, :destroy]
   # GET /games
   # GET /games.json
   def index
@@ -53,7 +53,7 @@ class GamesController < ApplicationController
         counterForImages = 1
         params[:game][:images].each do |image|
           Cloudinary::Uploader.upload(image.tempfile.path, 
-          :folder => "storby/" + params[:game][:name], :public_id => counterForImages.to_s, :overwrite => true, 
+          :folder => "storby/" + params[:game][:name].parameterize.underscore, :public_id => counterForImages.to_s, :overwrite => true, 
           :resource_type => "image")
           counterForImages += 1
         end

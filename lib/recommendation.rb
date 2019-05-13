@@ -19,12 +19,30 @@ module Recommendation
                 #And don't EVER USE IT IN CODE OTHER PEOPLE WILL USE
 
                 (user.games - common_games).each do |game|
-                    recommended[game] += 1
+                    recommended[game] += weight
                 end
             end
 
-            unless recommended.empty? then return recommended.sort_by { |key, value| value }.reverse.map { |key, value| key }.take(4) end    
+            unless recommended.empty? then return recommended.sort_by { |key, value| value }.reverse.map { |key, value| key }.first(4) end    
         end
         recommended = Game.all.take(4)
+    end
+
+    def recommend_similar_games
+        same_genre_games = self.class.all.where(genre: self.genre)
+
+        #exclude current game
+        same_genre_games -= [self]
+
+        recommended = Hash.new(0)
+
+        same_genre_games.each do |game|
+            shared_users = self.users & game.users
+            recommended[game] = shared_users.size
+        end
+
+        unless recommended.empty? then return recommended.sort_by { |key, value| value }.reverse.map { |key, value| key }.first(4) end
+
+        return Game.all.take(4)
     end
 end
