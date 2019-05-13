@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :orders
   resources :credit_cards
   resources :requests
   # devise_for :userrails

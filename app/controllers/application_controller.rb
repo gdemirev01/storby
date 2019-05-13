@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
     before_action :configure_permitted_parameters, if: :devise_controller?
-
+    Rails.application.config.filter_parameters += [:card_number]
+    Rails.application.config.filter_parameters += [:card_verification]
     protected
 
     def configure_permitted_parameters

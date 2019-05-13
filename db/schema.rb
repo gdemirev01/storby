@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_11_082221) do
+ActiveRecord::Schema.define(version: 2019_05_13_154205) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -55,13 +55,36 @@ ActiveRecord::Schema.define(version: 2019_05_11_082221) do
     t.string "status"
     t.date "relese_date"
     t.integer "imageCounter"
-    t.integer "genre", default: 0
+    t.integer "genre"
     t.index ["genre"], name: "index_games_on_genre"
   end
 
   create_table "games_users", id: false, force: :cascade do |t|
     t.integer "game_id", null: false
     t.integer "user_id", null: false
+  end
+
+  create_table "order_transactions", force: :cascade do |t|
+    t.integer "order_id"
+    t.string "action"
+    t.integer "amount"
+    t.boolean "success"
+    t.string "authorization"
+    t.string "message"
+    t.text "params"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "game_id"
+    t.string "ip_address"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "card_type"
+    t.date "card_expires_on"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "requests", force: :cascade do |t|

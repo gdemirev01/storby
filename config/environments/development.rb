@@ -62,5 +62,14 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.gem "activemerchant", :lib => "active_merchant"
   
+  config.after_initialize do
+  ActiveMerchant::Billing::Base.mode = :test
+  ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
+      login: 'gdemirev78-facilitator_api1.gmail.com',
+      password: '9UFBFWS8KFDDA8H4',
+      signature: "AyGU4EPrteLs4B5-UwCtU9CWOZJyA6gqvbzYkHKJOBU-S7oY4QgOjawb")
+end
+
 end
