@@ -114,14 +114,18 @@ class GamesController < ApplicationController
         card = CreditCard.find_by user: user
 
         # The card verification value is also known as CVV2, CVC2, or CID
-        credit_card = ActiveMerchant::Billing::CreditCard.new(
-                        :first_name         => card.first_name,
-                        :last_name          => card.last_name,
-                        :number             => card.number,
-                        :month              => card.expiration_month,
-                        :year               => card.expiration_year,
-                        :verification_value => card.card_security_code)
-
+        begin
+          credit_card = ActiveMerchant::Billing::CreditCard.new(
+                          :first_name         => card.first_name,
+                          :last_name          => card.last_name,
+                          :number             => card.number,
+                          :month              => card.expiration_month,
+                          :year               => card.expiration_year,
+                          :verification_value => card.card_security_code)
+        rescue StandardError => e
+          redirect_to new_credit_card_path
+          return
+        end
         # Validating the card automatically detects the card type
         if credit_card.validate.empty?
           # Capture $10 from the credit card

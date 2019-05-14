@@ -9,16 +9,15 @@ class User < ApplicationRecord
 
   enum role: [:user, :developer, :admin]
   after_initialize :set_default_role, :if => :new_record?
-
   private
   def set_default_role
     self.role ||= :user
   end
+  has_one :credit_card, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_one_attached :profile_pic, dependent: :destroy
 
-  has_many :reviews
-  has_one_attached :profile_pic
-
-  has_and_belongs_to_many :games
+  has_and_belongs_to_many :games, dependent: :destroy
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
