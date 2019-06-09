@@ -44,7 +44,30 @@ module Recommendation
     end
 
     def find_similar_users_euclidean
-
+        similarity = Hash.new(0)
+        if self.games.size > 0
+            other_users = self.class.all.where.not(id: self.id)
+            other_users.each do |other_user|
+                shared_games = self.games & other_user.games
+                if shared_games.size == 0 
+                    similarity[other_user] = 0
+                else
+                    sum_of_squares = 0
+                    for i in 0..shared_games.size
+                        self_score_y = get_score(shared_games[i], self)
+                        other_user_score_y = get_score(shared_games[i], other_user)
+                        for j in i+1..shared_games.size
+                            self_score_x = get_score(shared_games[j], self)
+                            other_user_score_x = get_score(shared_games[j], self)
+                            sum_of_squares += Math.sqrt(((self_score_x - other_user_score_x).abs ** 2) + ((self_score_x - other_user_score_x).abs ** 2))
+                        end
+                    end
+                    similarity[other_user] = 1/(1 + sum_of_squares)
+                end
+            end  
+            unless similarity.empty? then return similarity.sort_by { |key, value| value }.reverse.first(5) end
+        end
+        return similarity
     end
 
     def recommend_similar_games
@@ -63,5 +86,18 @@ module Recommendation
         unless recommended.empty? then return recommended.sort_by { |key, value| value }.reverse.map { |key, value| key }.first(4) end
 
         return Game.all.take(4)
+    end
+
+    private
+
+    def get_score(game, user)
+        review_for_current_game = user.reviews.find { |r| r.game == game }
+        if review_for_current_game.nil?
+            return 2
+        elsif review_for_current_game.recommended?
+            return 3
+        else
+            return 1
+        end
     end
 end
