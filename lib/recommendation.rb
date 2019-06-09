@@ -16,7 +16,7 @@ module Recommendation
                 #Here rests in peace an hour of wasted time due to the piece of shit that is the em dash
                 #Go ahead, look it up
                 #But don't ever use it 
-                #And don't EVER USE IT IN CODE OTHER PEOPLE WILL USE
+                #DO NOT EVER USE IT
 
                 (user.games - common_games).each do |game|
                     recommended[game] += weight

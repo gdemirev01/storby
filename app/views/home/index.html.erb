@@ -31,7 +31,7 @@
 
         <div class="columns is-multiline" >
             <% @games.each do |game| %>
-                <%= render 'components/game_card', game: game %>
+                <%= render 'components/game_card', game: game, column_size: "is-one-fifth" %>
             <% end %>
         </div>
     </div>
