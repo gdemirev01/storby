@@ -4,10 +4,9 @@ Rails.application.routes.draw do
   # devise_for :userrails
   get "/", to: "home#index"
   resources :home, :reviews
-<<<<<<< HEAD
+
   # match 'users/:id' => 'user#destroy', :via => :delete, :as => :admin_destroy_user
-=======
->>>>>>> c7de98c9531df8b46da64b46263f0d27747c8438
+
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' } do
     delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end

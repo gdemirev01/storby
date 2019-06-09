@@ -28,6 +28,25 @@ module Recommendation
         recommended = Game.all.take(4)
     end
 
+    def find_similar_users_jaccard
+        similarity = Hash.new(0)
+        if self.games.size > 0
+            other_users = self.class.all.where.not(id: self.id)
+
+            other_users.each do |other_user|
+                intersection = self.games & other_user.games
+                union = self.games | other_user.games
+                similarity[other_user] = intersection.size.to_f / union.size.to_f 
+            end
+            unless similarity.empty? then return similarity.sort_by { |key, value| value }.reverse.first(5) end
+        end
+        return similarity
+    end
+
+    def find_similar_users_euclidean
+
+    end
+
     def recommend_similar_games
         same_genre_games = self.class.all.where(genre: self.genre)
 
