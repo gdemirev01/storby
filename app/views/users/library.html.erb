@@ -13,8 +13,8 @@
             <br>
             <h3>Currently set</h3>
             <ul>
-                <% current_user.similar_users.each do |similar_user| %>
-                    <li><%= similar_user.email %><li>
+                <% current_user.similarities.each do |similarity| %>
+                    <li><%= similarity.user_b.email %> : <%= similarity.score %><li>
                 <% end %>
             </ul>
             <br>
