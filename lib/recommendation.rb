@@ -3,7 +3,7 @@
 
 module Recommendation
     def recommend_games
-
+        set_similar_users(5)
         if self.games.size > 0
             #try to make this only get users who have left at least one review
             other_users = self.class.all.where.not(id: self.id)
@@ -28,7 +28,7 @@ module Recommendation
         recommended = Game.all.take(4)
     end
 
-    def find_similar_users_jaccard
+    def find_similar_users_jaccard(max_users)
         similarity = Hash.new(0)
         if self.games.size > 0
             other_users = self.class.all.where.not(id: self.id)
@@ -38,12 +38,12 @@ module Recommendation
                 union = self.games | other_user.games
                 similarity[other_user] = intersection.size.to_f / union.size.to_f 
             end
-            unless similarity.empty? then return similarity.sort_by { |key, value| value }.reverse.first(5) end
+            unless similarity.empty? then return similarity.sort_by { |key, value| value }.reverse.first(max_users) end
         end
         return similarity
     end
 
-    def find_similar_users_euclidean
+    def find_similar_users_euclidean(max_users)
         similarity = Hash.new(0)
         if self.games.size > 0
             other_users = self.class.all.where.not(id: self.id)
@@ -65,9 +65,22 @@ module Recommendation
                     similarity[other_user] = 1/(1 + sum_of_squares)
                 end
             end  
-            unless similarity.empty? then return similarity.sort_by { |key, value| value }.reverse.first(5) end
+            unless similarity.empty? then return similarity.sort_by { |key, value| value }.reverse.first(max_users) end
         end
         return similarity
+    end
+
+    def set_similar_users(n)
+        # this doesn't do anything, though the code is right (checked in irb)
+        # if self.similar_users.empty?
+            find_similar_users_jaccard(n).each do |user, sc|
+                self.similar_users.push(user)
+                similarity = self.similarities.last
+                similarity.score = sc
+                similarity.save!
+                # Similarity.new(:user_id => self.id, :user_id => user.id, :similarity => score)
+            end
+        # end
     end
 
     def recommend_similar_games

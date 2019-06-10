@@ -11,16 +11,23 @@
         <div class="container">
             <h2>Users who have a similar taste to you</h2>
             <br>
+            <h3>Currently set</h3>
+            <ul>
+                <% current_user.similar_users.each do |similar_user| %>
+                    <li><%= similar_user.email %><li>
+                <% end %>
+            </ul>
+            <br>
             <h3>Measured by Euclidean score</h3>
             <ul>
-                <% current_user.find_similar_users_euclidean.each do |similar_user, similarity| %>
+                <% current_user.find_similar_users_euclidean(5).each do |similar_user, similarity| %>
                     <li><%= similar_user.email %> : <%= similarity %><li>
                 <% end %>
             </ul>
             <br>
             <h3>Measured by Jaccard similarity</h3>
             <ul>
-                <% current_user.find_similar_users_jaccard.each do |similar_user, similarity| %>
+                <% current_user.find_similar_users_jaccard(5).each do |similar_user, similarity| %>
                     <li><%= similar_user.email %> : <%= similarity %><li>
                 <% end %>
             </ul>

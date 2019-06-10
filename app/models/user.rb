@@ -19,6 +19,11 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :games, dependent: :destroy
 
+  has_many :similarities, foreign_key: :user_a_id, :dependent => :destroy
+  has_many(:reverse_similarities, :class_name => :Similarity,
+      :foreign_key => :user_b_id, :dependent => :destroy)
+  has_many :similar_users, :class_name => "User", through: :similarities, :source => :user_b
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
