@@ -1,10 +1,31 @@
-<section class="section">
-    <div class="container">
-        <% if user_signed_in? %>
-            <% current_user.games.each do |game| %>
-                <strong><%= game.name %>
-                <br>
-            <% end %>
-        <% end %>
-    </div>
-</section>
+<% if user_signed_in? %>
+    <section class="section">
+        <div class="container">
+                <% current_user.games.each do |game| %>
+                    <strong><%= game.name %>
+                    <br>
+                <% end %>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <h2>Users who have a similar taste to you</h2>
+            <br>
+            <h3>Measured by Euclidean score</h3>
+            <ul>
+                <% current_user.find_similar_users_euclidean.each do |similar_user, similarity| %>
+                    <li><%= similar_user.email %> : <%= similarity %><li>
+                <% end %>
+            </ul>
+            <br>
+            <h3>Measured by Jaccard similarity</h3>
+            <ul>
+                <% current_user.find_similar_users_jaccard.each do |similar_user, similarity| %>
+                    <li><%= similar_user.email %> : <%= similarity %><li>
+                <% end %>
+            </ul>
+        </div>
+    </section>
+<% else %>
+<p>Please, sign in to view this page!</p>
+<% end %>
