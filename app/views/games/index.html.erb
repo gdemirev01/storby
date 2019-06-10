@@ -15,7 +15,19 @@
             <div class="columns is-mobile is-vcentered">
               <div class="column is-2">
                 <figure class="image is-16by9">
-                  <%= image_tag(("https://res.cloudinary.com/moses-nfsg/image/upload/v1549921456/storby/" + game.name.parameterize.underscore + "/1")) %>
+                  <% if game.imageCounter == 0 && !game.igdb_image_url.nil? %>
+                    <%= image_tag(game.igdb_image_url, style: "width: 100%;")%>
+                  <% elsif game.imageCounter > 0 %>
+                    <% (1..game.imageCounter).to_a.each do |i| %>
+                      <div class="slide">
+                        <figure class="image is-16by9">
+                          <%= image_tag("https://res-5.cloudinary.com/moses-nfsg/image/upload/v1/storby/" + game.name.parameterize.underscore + "/" + i.to_s, style: "width: 100%;")%>
+                        </figure>
+                      </div>
+                    <% end %>
+                  <% else %>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" style="width: 50%;">
+                  <% end %>
                 </figure>
               </div>
               <div class="column is-6">

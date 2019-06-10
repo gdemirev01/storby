@@ -9,15 +9,21 @@
       <div class="tile is-8 is-parent">
         <div class="tile is-child">
           <div class="slideshow-container">
-            <% (1..@game.imageCounter).to_a.each do |i| %>
-              <div class="slide">
-                <figure class="image is-16by9">
-                  <%= image_tag("https://res-5.cloudinary.com/moses-nfsg/image/upload/v1/storby/" + @game.name.parameterize.underscore + "/" + i.to_s, style: "width: 100%;")%>
-                </figure>
-              </div>
+            <% if @game.imageCounter == 0 && !@game.igdb_image_url.nil? %>
+              <%= image_tag(@game.igdb_image_url, style: "width: 100%;")%>
+            <% elsif @game.imageCounter > 0 %>
+              <% (1..@game.imageCounter).to_a.each do |i| %>
+                <div class="slide">
+                  <figure class="image is-16by9">
+                    <%= image_tag("https://res-5.cloudinary.com/moses-nfsg/image/upload/v1/storby/" + @game.name.parameterize.underscore + "/" + i.to_s, style: "width: 100%;")%>
+                  </figure>
+                </div>
+              <% end %>
+              <a id="prev-slide"><%= fa_icon "arrow-left lg" %></a>
+              <a id="next-slide"><%= fa_icon "arrow-right lg" %></a>
+            <% else %>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" style="width: 50%;">
             <% end %>
-            <a id="prev-slide"><%= fa_icon "arrow-left lg" %></a>
-            <a id="next-slide"><%= fa_icon "arrow-right lg" %></a>
           </div>
         </div>
       </div>
