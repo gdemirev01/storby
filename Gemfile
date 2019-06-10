@@ -76,8 +76,22 @@ gem 'activemerchant'
 
 gem 'trestle-auth'
 
+
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
+
+gem 'igdb_api'
+
+gem 'igdb2'
+
+gem 'kaminari'
+
+gem 'will_paginate', '~> 3.1.1'
+
+gem 'will_paginate-bootstrap' 
+
+gem 'rack-cors'
+
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
