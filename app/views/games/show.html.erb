@@ -77,7 +77,9 @@
           <%= f.submit "Add to library", class: 'button' %>
         <% end %>
       <% else %>
-        <strong class="is-size-4">Game is already in your library | <%= link_to "Download", rails_blob_path(@game.source[0], disposition: 'attachment'), class: 'button' %></strong>
+        <% if !@game.source[0].nil? %>
+          <strong class="is-size-4">Game is already in your library | <%= link_to "Download", rails_blob_path(@game.source[0], disposition: 'attachment'), class: 'button' %></strong>
+        <% end %>
       <% end %>
     <% end %>
   </div>

@@ -190,14 +190,10 @@ GEM
     puma (3.12.0)
     raabro (1.1.6)
     rack (2.0.6)
-<<<<<<< HEAD
+    rack-cors (1.0.3)
     rack-protection (2.0.5)
       rack
-=======
-    rack-cors (1.0.3)
->>>>>>> 00dc696e96558c626fca6a8b14bd56c4b8ffa54b
     rack-test (1.1.0)
-      rack (>= 1.0, < 3)
     rails (5.2.2)
       actioncable (= 5.2.2)
       actionmailer (= 5.2.2)
